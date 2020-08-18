@@ -11,9 +11,9 @@
         <attr name="customButtonIsLoading" format="boolean"/>
         <attr name="customButtonDisabledTextColor" format="color" />
         <attr name="customButtonType">
-            <flag name="default" value="0" />
-            <flag name="whatsapp" value="1" />
-            <flag name="phone" value="2" />
+            <flag name="typeDefault" value="0" />
+            <flag name="typeWhatsApp" value="1" />
+            <flag name="typePhone" value="2" />
         </attr>
     </declare-styleable>
 

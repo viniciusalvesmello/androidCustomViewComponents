@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomEditTextStyleable">
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="android:required" />
+        <attr name="android:maxLength" />s
+        <attr name="customEditTextType">
+            <flag name="text" value="0" />
+            <flag name="number" value="1" />
+            <flag name="money" value="2" />s
+            <flag name="phone" value="3" />
+            <flag name="cpf" value="4" />
+            <flag name="cnph" value="5" />
+            <flag name="rg" value="6" />
+        </attr>
+    </declare-styleable>
+
+</resources>
