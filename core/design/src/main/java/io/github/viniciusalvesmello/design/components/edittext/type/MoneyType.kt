@@ -15,6 +15,6 @@ class MoneyType : EditTextType() {
             comMantemZerosAoLimpar()
         }.build()
 
-    override fun String.getTextWithoutMask(): String =
-        Formatador.VALOR_COM_SIMBOLO.desformata(this).trim()
+    override fun getTextWithoutMask(text: String): String =
+        Formatador.VALOR_COM_SIMBOLO.desformata(text).trim()
 }

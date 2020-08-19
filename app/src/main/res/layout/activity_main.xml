@@ -10,8 +10,8 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:id="@+id/mtTop"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,32 +30,60 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <io.github.viniciusalvesmello.design.components.button.CustomButton
-                style="@style/CustomButton.Primary"
-                android:id="@+id/cbPrimary"
+            <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+                android:id="@+id/cetPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:text="Custom Button Primary"
+                android:hint="Telefone"
+                app:customEditTextType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <io.github.viniciusalvesmello.design.components.button.CustomButton
-                style="@style/CustomButton.Primary"
-                android:id="@+id/cbPrimaryLoading"
+            <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+                android:id="@+id/cetCPF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                app:customButtonIsLoading="true"
-                android:text="Custom Button Primary - Loading"
+                android:hint="CPF"
+                app:customEditTextType="cpf"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cbPrimary" />
+                app:layout_constraintTop_toBottomOf="@id/cetPhone" />
+
+            <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+                android:id="@+id/cetMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Valor"
+                android:maxLength="15"
+                app:customEditTextType="money"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cetCPF" />
+
+            <io.github.viniciusalvesmello.design.components.button.CustomButton
+                android:id="@+id/cbInsert"
+                style="@style/CustomButton.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="Inserir"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cetMoney" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

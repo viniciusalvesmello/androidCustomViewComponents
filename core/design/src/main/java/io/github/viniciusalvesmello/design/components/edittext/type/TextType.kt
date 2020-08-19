@@ -1,3 +1,3 @@
 package io.github.viniciusalvesmello.design.components.edittext.type
 
-class GeneralType: EditTextType()
+class TextType: EditTextType()
