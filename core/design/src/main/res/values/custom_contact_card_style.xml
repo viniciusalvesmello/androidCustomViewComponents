@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomContactCard"/>
+
+    <style name="CustomContactCard" parent="android:Widget.Button">
+        <item name="customContactCardTitleTextSize">16sp</item>
+        <item name="customContactCardTitleTextColor">?attr/colorOnSurface</item>
+        <item name="customContactCardTitleFontFamily">@font/roboto_medium</item>
+        <item name="customContactCardTitleTextStyle">bold</item>
+        <item name="customContactCardTextSize">16sp</item>
+        <item name="customContactCardTextColor">?attr/colorOnSurface</item>
+        <item name="customContactCardFontFamily">@font/roboto_light</item>
+        <item name="customContactCardTextStyle">normal</item>
+    </style>
+
+    <style name="CustomContactCard.Primary" parent="CustomContactCard">
+        <item name="android:background">@drawable/custom_contact_card_primary_background</item>
+    </style>
+</resources>

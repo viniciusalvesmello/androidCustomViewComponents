@@ -28,6 +28,8 @@ class CustomEditText @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
+    var required: Boolean = false
+
     var text: String
         get() = tietCustomEditText.text.toString()
         set(value) {
@@ -37,7 +39,13 @@ class CustomEditText @JvmOverloads constructor(
     var hint: String
         get() = tilCustomEditText.hint.toString()
         set(value) {
-            tilCustomEditText.hint = value
+            "$value${if (required) {
+                STRING_REQUIRED
+            } else {
+                ""
+            }}".apply {
+                tilCustomEditText.hint = this
+            }
         }
 
     var error: String
@@ -45,8 +53,6 @@ class CustomEditText @JvmOverloads constructor(
         set(value) {
             tilCustomEditText.error = value
         }
-
-    var required: Boolean = false
 
     private var editTextType: EditTextType = TextType()
 
@@ -63,9 +69,9 @@ class CustomEditText @JvmOverloads constructor(
             defStyleRes
         ).apply {
 
+            required = getBoolean(R.styleable.CustomEditTextStyleable_android_required, false)
             text = getString(R.styleable.CustomEditTextStyleable_android_text).handle()
             hint = getString(R.styleable.CustomEditTextStyleable_android_hint).handle()
-            required = getBoolean(R.styleable.CustomEditTextStyleable_android_required, false)
             setCustomEditTextType(getInt(R.styleable.CustomEditTextStyleable_customEditTextType, 0))
             setMaxLength(getInt(R.styleable.CustomEditTextStyleable_android_maxLength, 0))
 
@@ -82,11 +88,15 @@ class CustomEditText @JvmOverloads constructor(
     }
 
     fun setMaxLength(length: Int) {
-        if(length <= 0) return
+        if (length <= 0) return
         tietCustomEditText.filters = arrayOf(InputFilter.LengthFilter(length))
     }
 
     fun isValid() = editTextType.isValid(text, required)
+
+    fun clearError() {
+        error = ""
+    }
 
     private fun Int.getEditTextType(): EditTextType = when (this) {
         TEXT -> TextType()
@@ -97,5 +107,9 @@ class CustomEditText @JvmOverloads constructor(
         CNPJ -> MoneyType()
         RG -> TextType()
         else -> TextType()
+    }
+
+    companion object {
+        private const val STRING_REQUIRED = "*"
     }
 }

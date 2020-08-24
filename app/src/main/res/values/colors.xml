@@ -9,4 +9,5 @@
     <color name="surface">#b8b8b8</color>
     <color name="onSurface">#000000</color>
     <color name="error">#b00020</color>
+    <color name="grayLight">#E2F8F1F1</color>
 </resources>

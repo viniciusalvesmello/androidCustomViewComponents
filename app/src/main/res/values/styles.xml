@@ -9,5 +9,6 @@
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/onSurface</item>
         <item name="colorError">@color/error</item>
+        <item name="colorGrayLight">@color/grayLight</item>
     </style>
 </resources>

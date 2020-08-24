@@ -6,7 +6,7 @@ import br.com.concrete.canarinho.formatador.Formatador
 import br.com.concrete.canarinho.validator.Validador
 import br.com.concrete.canarinho.watcher.MascaraNumericaTextWatcher
 
-class CPFType: EditTextType() {
+class CPFType : EditTextType() {
 
     override fun getInputType(): Int = InputType.TYPE_CLASS_NUMBER
 
@@ -18,8 +18,11 @@ class CPFType: EditTextType() {
     override fun getTextWithoutMask(text: String): String =
         Formatador.CPF.desformata(text)
 
-    override fun isValid(text: String, required: Boolean): Boolean =
-        Validador.CPF.ehValido(text)
+    override fun isValid(text: String, required: Boolean): Boolean = when {
+        !required && text.isEmpty() -> true
+        required && getTextWithoutMask(text).isEmpty() -> false
+        else -> Validador.CPF.ehValido(text)
+    }
 
     companion object {
         private const val MASK_CPF = "###.###.###-##"

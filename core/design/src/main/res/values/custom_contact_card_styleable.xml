@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomContactCardStyleable">
+        <attr name="android:background" />
+        <attr name="customContactCardNome" format="string" />
+        <attr name="customContactCardPhone" format="string" />
+        <attr name="customContactCardCPF" format="string" />
+
+        <attr name="customContactCardTitleTextSize" format="dimension" />
+        <attr name="customContactCardTitleTextColor" format="reference|color" />
+        <attr name="customContactCardTitleTextStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+            <flag name="bold_italic" value="3" />
+        </attr>
+        <attr name="customContactCardTitleFontFamily" format="string" />
+
+        <attr name="customContactCardTextSize" format="dimension" />
+        <attr name="customContactCardTextColor" format="reference|color" />
+        <attr name="customContactCardTextStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+            <flag name="bold_italic" value="3" />
+        </attr>
+        <attr name="customContactCardFontFamily" format="string" />
+    </declare-styleable>
+
+</resources>

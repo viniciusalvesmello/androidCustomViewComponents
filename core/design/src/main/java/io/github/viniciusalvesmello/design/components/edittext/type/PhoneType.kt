@@ -18,8 +18,11 @@ class PhoneType : EditTextType() {
     override fun getTextWithoutMask(text: String): String =
         Formatador.TELEFONE.desformata(text)
 
-    override fun isValid(text: String, required: Boolean): Boolean =
-        Validador.TELEFONE.ehValido(text)
+    override fun isValid(text: String, required: Boolean): Boolean = when {
+        !required && text.isEmpty() -> true
+        required && getTextWithoutMask(text).isEmpty() -> false
+        else -> Validador.TELEFONE.ehValido(text)
+    }
 
     companion object {
         private const val MASK_PHONE = "(##) #####-####"
