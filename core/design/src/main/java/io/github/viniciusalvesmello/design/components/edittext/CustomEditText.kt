@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.github.viniciusalvesmello.design.R
+import io.github.viniciusalvesmello.design.components.edittext.type.CNPJType
 import io.github.viniciusalvesmello.design.components.edittext.type.CPFType
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextType
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.CNPJ
@@ -12,7 +13,6 @@ import io.github.viniciusalvesmello.design.components.edittext.type.EditTextType
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.MONEY
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.NUMBER
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.PHONE
-import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.RG
 import io.github.viniciusalvesmello.design.components.edittext.type.EditTextTypeConstants.TEXT
 import io.github.viniciusalvesmello.design.components.edittext.type.MoneyType
 import io.github.viniciusalvesmello.design.components.edittext.type.NumberType
@@ -28,7 +28,13 @@ class CustomEditText @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    var required: Boolean = false
+    private var _required = false
+    var required: Boolean
+        get() = _required
+        set(value) {
+            _required = value
+            updateHint()
+        }
 
     var text: String
         get() = tietCustomEditText.text.toString()
@@ -36,16 +42,12 @@ class CustomEditText @JvmOverloads constructor(
             tietCustomEditText.setText(value)
         }
 
+    private var _hint = ""
     var hint: String
-        get() = tilCustomEditText.hint.toString()
+        get() = _hint
         set(value) {
-            "$value${if (required) {
-                STRING_REQUIRED
-            } else {
-                ""
-            }}".apply {
-                tilCustomEditText.hint = this
-            }
+            _hint = value
+            updateHint()
         }
 
     var error: String
@@ -57,10 +59,7 @@ class CustomEditText @JvmOverloads constructor(
     private var editTextType: EditTextType = TextType()
 
     init {
-        inflate(
-            context,
-            R.layout.custom_edittext, this
-        )
+        inflate(context, R.layout.custom_edittext, this)
 
         context.theme.obtainStyledAttributes(
             attrs,
@@ -69,9 +68,9 @@ class CustomEditText @JvmOverloads constructor(
             defStyleRes
         ).apply {
 
-            required = getBoolean(R.styleable.CustomEditTextStyleable_android_required, false)
             text = getString(R.styleable.CustomEditTextStyleable_android_text).handle()
             hint = getString(R.styleable.CustomEditTextStyleable_android_hint).handle()
+            required = getBoolean(R.styleable.CustomEditTextStyleable_android_required, false)
             setCustomEditTextType(getInt(R.styleable.CustomEditTextStyleable_customEditTextType, 0))
             setMaxLength(getInt(R.styleable.CustomEditTextStyleable_android_maxLength, 0))
 
@@ -98,14 +97,21 @@ class CustomEditText @JvmOverloads constructor(
         error = ""
     }
 
+    private fun updateHint() {
+        if (required && hint.isNotEmpty()) {
+            tilCustomEditText.hint = "$hint$STRING_REQUIRED"
+        } else {
+            tilCustomEditText.hint = hint
+        }
+    }
+
     private fun Int.getEditTextType(): EditTextType = when (this) {
         TEXT -> TextType()
         NUMBER -> NumberType()
         MONEY -> MoneyType()
         PHONE -> PhoneType()
         CPF -> CPFType()
-        CNPJ -> MoneyType()
-        RG -> TextType()
+        CNPJ -> CNPJType()
         else -> TextType()
     }
 

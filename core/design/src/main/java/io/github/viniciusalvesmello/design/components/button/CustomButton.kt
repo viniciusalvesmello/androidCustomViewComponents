@@ -57,10 +57,7 @@ class CustomButton @JvmOverloads constructor(
         }
 
     init {
-        inflate(
-            context,
-            R.layout.custom_button, this
-        )
+        inflate(context, R.layout.custom_button, this)
 
         context.theme.obtainStyledAttributes(
             attrs,
