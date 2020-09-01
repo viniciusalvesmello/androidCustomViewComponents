@@ -71,6 +71,9 @@ class CustomEditText @JvmOverloads constructor(
             text = getString(R.styleable.CustomEditTextStyleable_android_text).handle()
             hint = getString(R.styleable.CustomEditTextStyleable_android_hint).handle()
             required = getBoolean(R.styleable.CustomEditTextStyleable_android_required, false)
+            tietCustomEditText.setTextColor(
+                getInt(R.styleable.CustomEditTextStyleable_android_textColor, 0)
+            )
             setCustomEditTextType(getInt(R.styleable.CustomEditTextStyleable_customEditTextType, 0))
             setMaxLength(getInt(R.styleable.CustomEditTextStyleable_android_maxLength, 0))
 

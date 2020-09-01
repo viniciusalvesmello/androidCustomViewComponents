@@ -11,5 +11,7 @@
         <item name="colorError">@color/error</item>
         <item name="colorGrayLight">@color/grayLight</item>
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="android:textColorPrimary">@color/onPrimary</item>
+        <item name="android:textColorSecondary">@color/onSecondary</item>
     </style>
 </resources>

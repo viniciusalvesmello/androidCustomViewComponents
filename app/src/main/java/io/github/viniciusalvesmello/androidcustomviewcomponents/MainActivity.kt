@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, CustomEditTextActivity::class.java))
         }
         cbButton.setOnClickListener {
-
+            startActivity(Intent(this, CustomButtonActivity::class.java))
         }
         cbContact.setOnClickListener {
 

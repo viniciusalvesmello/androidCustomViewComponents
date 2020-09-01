@@ -11,4 +11,10 @@
         <item name="android:background">@drawable/custom_button_primary_background</item>
         <item name="customButtonDisabledTextColor">?attr/colorOnSurface</item>
     </style>
+
+    <style name="CustomButton.Secondary" parent="CustomButton">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:background">@drawable/custom_button_secondary_background</item>
+        <item name="customButtonDisabledTextColor">?attr/colorOnPrimary</item>
+    </style>
 </resources>
