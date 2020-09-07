@@ -5,7 +5,6 @@ import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import io.github.viniciusalvesmello.design.components.edittext.CustomEditText
-import io.github.viniciusalvesmello.test.extension.tietCustomEditText
 import org.hamcrest.Matcher
 
 fun clearTextOnCustomEditText(): ViewAction =
@@ -15,8 +14,9 @@ fun clearTextOnCustomEditText(): ViewAction =
         override fun getDescription(): String = "clear text on CustomEditText"
 
         override fun perform(uiController: UiController?, view: View?) {
-            if (view is CustomEditText)
-                view.tietCustomEditText().setText("")
+           (view as? CustomEditText)?.apply {
+               text = ""
+           }
         }
     }
 
@@ -27,7 +27,8 @@ fun setTextOnCustomEditText(viewActionText: String): ViewAction =
         override fun getDescription(): String = "Set text $viewActionText on CustomEditText"
 
         override fun perform(uiController: UiController?, view: View?) {
-            if (view is CustomEditText)
-                view.tietCustomEditText().setText(viewActionText)
+            (view as? CustomEditText)?.apply {
+                text = viewActionText
+            }
         }
     }

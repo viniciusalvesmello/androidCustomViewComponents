@@ -11,15 +11,15 @@ import io.github.viniciusalvesmello.test.customs.setTextOnCustomEditText
 import org.hamcrest.CoreMatchers
 
 class ActionRobot {
-    fun fillCustomEditText(@IdRes field: Int, text: String) {
-        onView(ViewMatchers.withId(field)).perform(
+    fun fillCustomEditText(@IdRes viewId: Int, text: String) {
+        onView(ViewMatchers.withId(viewId)).perform(
             clearTextOnCustomEditText(),
             setTextOnCustomEditText(text),
             closeSoftKeyboard()
         )
     }
 
-    fun clickOnView(@IdRes buttonId: Int) {
-        onView(CoreMatchers.allOf(ViewMatchers.withId(buttonId), isDisplayed())).perform(click())
+    fun clickOnView(@IdRes viewId: Int) {
+        onView(CoreMatchers.allOf(ViewMatchers.withId(viewId), isDisplayed())).perform(click())
     }
 }

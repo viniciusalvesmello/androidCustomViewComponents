@@ -5,13 +5,18 @@ import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import io.github.viniciusalvesmello.test.customs.customButtonIconIsVisible
 import io.github.viniciusalvesmello.test.customs.customButtonIsLoading
+import io.github.viniciusalvesmello.test.customs.customButtonProgressBarIsVisible
+import io.github.viniciusalvesmello.test.customs.customButtonTextIsVisible
 import io.github.viniciusalvesmello.test.customs.customButtonWithText
-import io.github.viniciusalvesmello.test.customs.customEditTextWithText
 import io.github.viniciusalvesmello.test.customs.customEditTextWithError
 import io.github.viniciusalvesmello.test.customs.customEditTextWithHint
+import io.github.viniciusalvesmello.test.customs.customEditTextWithText
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matcher
 
@@ -41,12 +46,12 @@ class AssetRobot {
         onView(withId(id)).check(matches(CoreMatchers.not(ViewMatchers.isDisplayed())))
     }
 
-    fun viewIsClickable(@IdRes id: Int) {
-        onView(withId(id)).check(matches(ViewMatchers.isClickable()))
-    }
-
-    fun viewIsFocusable(@IdRes id: Int) {
-        onView(withId(id)).check(matches(ViewMatchers.isFocusable()))
+    fun viewIsEnabled(@IdRes id: Int, isEnabled: Boolean = true) {
+        if (isEnabled) {
+            onView(withId(id)).check(matches(ViewMatchers.isEnabled()))
+        } else {
+            onView(withId(id)).check(matches(CoreMatchers.not(ViewMatchers.isEnabled())))
+        }
     }
 
     fun customEditTextWithText(@IdRes viewId: Int, text: String) {
@@ -65,14 +70,17 @@ class AssetRobot {
         onView(withId(viewId)).check(matches(customButtonWithText(text)))
     }
 
-    fun customButtonIsLoading(@IdRes viewId: Int, loading: Boolean) {
-        onView(withId(viewId)).check(matches(customButtonIsLoading(loading)))
+    fun customButtonIsLoading(@IdRes viewId: Int, isLoading: Boolean = true) {
+        onView(withId(viewId)).check(matches(customButtonIsLoading(isLoading)))
+        onView(withId(viewId)).check(matches(customButtonProgressBarIsVisible(isLoading)))
+        onView(withId(viewId)).check(matches(customButtonIconIsVisible(!isLoading)))
+        onView(withId(viewId)).check(matches(customButtonTextIsVisible(!isLoading)))
     }
 
-    private fun resolveVisibilityMatcher(isDisplayed: Boolean): Matcher<View> {
-        return if (isDisplayed)
-            ViewMatchers.isDisplayed()
-        else
-            ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)
-    }
+    private fun resolveVisibilityMatcher(isDisplayed: Boolean): Matcher<View> =
+        if (isDisplayed) {
+            isDisplayed()
+        } else {
+            withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)
+        }
 }

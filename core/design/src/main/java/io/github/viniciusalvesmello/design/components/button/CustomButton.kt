@@ -35,15 +35,13 @@ class CustomButton @JvmOverloads constructor(
     var isLoading: Boolean
         get() = pbCustomButton.visibility == View.VISIBLE
         set(value) {
-            if (value) {
-                isClickable = false
-                isFocusable = false
+            if (value && isEnabled) {
+                updateStateView(false)
                 ivCustomButton.gone()
                 tvCustomButton.gone()
                 pbCustomButton.visible()
             } else {
-                isClickable = isEnabled
-                isFocusable = isEnabled
+                updateStateView(isEnabled)
                 drawable?.apply { ivCustomButton.visible() }
                 tvCustomButton.visible()
                 pbCustomButton.gone()
@@ -141,6 +139,7 @@ class CustomButton @JvmOverloads constructor(
             R.styleable.CustomButtonStyleable_customButtonIsLoading,
             false
         )
+
         pbCustomButton.indeterminateTintList = getTextColor(typedArray)
     }
 
@@ -163,11 +162,12 @@ class CustomButton @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        isClickable = enabled
-        isFocusable = enabled
+        updateStateView(enabled)
+    }
 
-        tvCustomButton.isEnabled = enabled
-        pbCustomButton.isEnabled = enabled
+    private fun updateStateView(isEnabled: Boolean) {
+        isClickable = isEnabled
+        isFocusable = isEnabled
     }
 
     companion object {
