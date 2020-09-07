@@ -9,11 +9,14 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import io.github.viniciusalvesmello.test.customs.appCompatCheckBoxIsChecked
+import io.github.viniciusalvesmello.test.customs.childOf
 import io.github.viniciusalvesmello.test.customs.customButtonIconIsVisible
 import io.github.viniciusalvesmello.test.customs.customButtonIsLoading
 import io.github.viniciusalvesmello.test.customs.customButtonProgressBarIsVisible
 import io.github.viniciusalvesmello.test.customs.customButtonTextIsVisible
 import io.github.viniciusalvesmello.test.customs.customButtonWithText
+import io.github.viniciusalvesmello.test.customs.customEditTextIsRequired
 import io.github.viniciusalvesmello.test.customs.customEditTextWithError
 import io.github.viniciusalvesmello.test.customs.customEditTextWithHint
 import io.github.viniciusalvesmello.test.customs.customEditTextWithText
@@ -54,6 +57,24 @@ class AssetRobot {
         }
     }
 
+    fun hasChildWithText(
+        @IdRes parentId: Int,
+        @IdRes viewId: Int,
+        position: Int,
+        text: String
+    ) {
+        onView(
+            CoreMatchers.allOf(
+                childOf(withId(parentId), position),
+                ViewMatchers.hasDescendant(CoreMatchers.allOf(withId(viewId), withText(text)))
+            )
+        ).check(matches(withText(text)))
+    }
+
+    fun appCompatCheckBoxIsChecked(@IdRes viewId: Int, isChecked: Boolean) {
+        onView(withId(viewId)).check(matches(appCompatCheckBoxIsChecked(isChecked)))
+    }
+
     fun customEditTextWithText(@IdRes viewId: Int, text: String) {
         onView(withId(viewId)).check(matches(customEditTextWithText(text)))
     }
@@ -64,6 +85,10 @@ class AssetRobot {
 
     fun customEditTextWithError(@IdRes viewId: Int, error: String) {
         onView(withId(viewId)).check(matches(customEditTextWithError(error)))
+    }
+
+    fun customEditTextIsRequired(@IdRes viewId: Int, isRequired: Boolean) {
+        onView(withId(viewId)).check(matches(customEditTextIsRequired(isRequired)))
     }
 
     fun customButtonWithText(@IdRes viewId: Int, text: String) {

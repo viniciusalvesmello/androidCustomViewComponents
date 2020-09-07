@@ -51,7 +51,7 @@ class CustomEditText @JvmOverloads constructor(
         }
 
     var error: String
-        get() = tilCustomEditText.error.toString()
+        get() = if (tilCustomEditText.error == null) "" else tilCustomEditText.error.toString()
         set(value) {
             tilCustomEditText.error = value
         }

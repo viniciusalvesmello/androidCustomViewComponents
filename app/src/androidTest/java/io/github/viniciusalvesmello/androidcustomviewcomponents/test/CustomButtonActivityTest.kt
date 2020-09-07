@@ -1,14 +1,11 @@
 package io.github.viniciusalvesmello.androidcustomviewcomponents.test
 
-import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import io.github.viniciusalvesmello.androidcustomviewcomponents.CustomButtonActivity
-import io.github.viniciusalvesmello.androidcustomviewcomponents.robot.customButtonActivityAction
-import io.github.viniciusalvesmello.androidcustomviewcomponents.robot.customButtonActivityAssert
-import org.junit.After
-import org.junit.Before
+import io.github.viniciusalvesmello.androidcustomviewcomponents.robot.CustomButtonActivityRobot.actionRobot
+import io.github.viniciusalvesmello.androidcustomviewcomponents.robot.CustomButtonActivityRobot.assertRobot
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,20 +17,10 @@ class CustomButtonActivityTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(CustomButtonActivity::class.java)
 
-    @Before
-    fun setupBefore() {
-        Intents.init()
-    }
-
-    @After
-    fun setupAfter() {
-        Intents.release()
-    }
-
     @Test
     fun givenInitialState_whenOpenScreen_shouldCheckAllData() {
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: None")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: None")
 
             cbPrimaryEnabledWithText("Primary")
             cbPrimaryEnabledIsEnabled(true)
@@ -71,55 +58,55 @@ class CustomButtonActivityTest {
 
     @Test
     fun givenButtonPrimaryEnabled_whenClick_shouldCheckLastActionAndLoadingButton() {
-        customButtonActivityAction {
+        actionRobot {
             cbPrimaryEnabledClick()
         }
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: Primary")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: Primary")
             cbPrimaryEnabledIsLoading(true)
         }
     }
 
     @Test
     fun givenButtonWhatsAppEnabled_whenClick_shouldCheckLastActionAndLoadingButton() {
-        customButtonActivityAction {
+        actionRobot {
             cbTypeWhatsAppEnabledClick()
         }
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: WhatsApp")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: WhatsApp")
             cbTypeWhatsAppEnabledIsLoading(true)
         }
     }
 
     @Test
     fun givenButtonWhatsAppWithNumberPhone_whenClick_shouldCheckLastActionAndLoadingButton() {
-        customButtonActivityAction {
+        actionRobot {
             cbTypeWhatsAppWithPhoneClick()
         }
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: (21) 98765-5544")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: (21) 98765-5544")
             cbTypeWhatsAppWithPhoneIsLoading(true)
         }
     }
 
     @Test
     fun givenButtonPhoneEnabled_whenClick_shouldCheckLastActionAndLoadingButton() {
-        customButtonActivityAction {
+        actionRobot {
             cbTypePhoneEnabledClick()
         }
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: Telefone")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: Telefone")
             cbTypePhoneEnabledIsLoading(true)
         }
     }
 
     @Test
     fun givenButtonPhoneWithNumber_whenClick_shouldCheckLastActionAndLoadingButton() {
-        customButtonActivityAction {
+        actionRobot {
             cbTypePhoneWithNumberClick()
         }
-        customButtonActivityAssert {
-            tvLastActionWithText("Last Action: (21) 98765-5544")
+        assertRobot {
+            tvLastActionWithText("Last ActionRobot: (21) 98765-5544")
             cbTypePhoneWithNumberIsLoading(true)
         }
     }
