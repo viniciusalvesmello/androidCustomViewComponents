@@ -1,3 +1,4 @@
+include ':core:test'
 include ':core:design'
 include ':app'
 rootProject.name = "Android Custom View Components"

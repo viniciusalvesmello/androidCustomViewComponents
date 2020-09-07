@@ -19,10 +19,10 @@ class CustomButtonActivity : AppCompatActivity() {
         cbPrimaryDisabled.showText()
         cbTypeWhatsAppEnabled.showText()
         cbTypeWhatsAppDisabled.showText()
-        cbTypeWhatsAppWithText.showText()
+        cbTypeWhatsAppWithPhone.showText()
         cbTypePhoneEnabled.showText()
         cbTypePhoneDisabled.showText()
-        cbTypePhoneWithText.showText()
+        cbTypePhoneWithNumber.showText()
     }
 
     private fun CustomButton.showText() {
