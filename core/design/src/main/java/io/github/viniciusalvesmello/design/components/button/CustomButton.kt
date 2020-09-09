@@ -23,13 +23,16 @@ class CustomButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
+    defStyleRes: Int = 0,
+    autoInitializer: Boolean = true
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
+    private var _text: String = ""
     var text: String
-        get() = tvCustomButton.text.toString()
+        get() = _text
         set(value) {
             tvCustomButton.text = value
+            _text = value
         }
 
     var isLoading: Boolean
@@ -42,32 +45,37 @@ class CustomButton @JvmOverloads constructor(
                 pbCustomButton.visible()
             } else {
                 updateStateView(isEnabled)
-                drawable?.apply { ivCustomButton.visible() }
+                drawable?.run { ivCustomButton.visible() } ?: ivCustomButton.gone()
                 tvCustomButton.visible()
                 pbCustomButton.gone()
             }
         }
 
+    private var _drawable: Drawable? = null
     var drawable: Drawable?
-        get() = ivCustomButton.drawable ?: null
+        get() = _drawable
         set(value) {
-            value?.apply { ivCustomButton.setImageDrawable(this) } ?: ivCustomButton.gone()
+            ivCustomButton.setImageDrawable(value)
+            _drawable = value
+            value?.run { ivCustomButton.visible() } ?: ivCustomButton.gone()
         }
 
     init {
         inflate(context, R.layout.custom_button, this)
 
-        context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.CustomButtonStyleable,
-            defStyleAttr,
-            defStyleRes
-        ).apply {
-            initText(this)
-            initIcon(this)
-            initState(this)
+        if (autoInitializer) {
+            context.theme.obtainStyledAttributes(
+                attrs,
+                R.styleable.CustomButtonStyleable,
+                defStyleAttr,
+                defStyleRes
+            ).apply {
+                initText(this)
+                initIcon(this)
+                initState(this)
 
-            recycle()
+                recycle()
+            }
         }
     }
 
@@ -174,9 +182,9 @@ class CustomButton @JvmOverloads constructor(
         const val CUSTOM_BUTTON_TYPE_DEFAULT = 0
         const val CUSTOM_BUTTON_TYPE_WHATSAPP = 1
         const val CUSTOM_BUTTON_TYPE_PHONE = 2
+        const val CUSTOM_BUTTON_DESCRIPTION_WHATSAPP = "WhatsApp"
+        const val CUSTOM_BUTTON_DESCRIPTION_PHONE = "Telefone"
 
-        private const val CUSTOM_BUTTON_DESCRIPTION_WHATSAPP = "WhatsApp"
-        private const val CUSTOM_BUTTON_DESCRIPTION_PHONE = "Telefone"
         private const val CUSTOM_BUTTON_TAG_ERROR = "error_custom_button"
         private const val CUSTOM_BUTTON_PREFIX_MESSAGE_ERROR = "Error set font family on CustomButton:"
     }

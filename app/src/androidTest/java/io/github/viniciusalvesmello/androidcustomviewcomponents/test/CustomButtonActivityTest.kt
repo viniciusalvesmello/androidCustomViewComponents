@@ -20,7 +20,7 @@ class CustomButtonActivityTest {
     @Test
     fun givenInitialState_whenOpenScreen_shouldCheckAllData() {
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: None")
+            tvLastActionWithText("Last Action: None")
 
             cbPrimaryEnabledWithText("Primary")
             cbPrimaryEnabledIsEnabled(true)
@@ -62,7 +62,7 @@ class CustomButtonActivityTest {
             cbPrimaryEnabledClick()
         }
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: Primary")
+            tvLastActionWithText("Last Action: Primary")
             cbPrimaryEnabledIsLoading(true)
         }
     }
@@ -73,7 +73,7 @@ class CustomButtonActivityTest {
             cbTypeWhatsAppEnabledClick()
         }
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: WhatsApp")
+            tvLastActionWithText("Last Action: WhatsApp")
             cbTypeWhatsAppEnabledIsLoading(true)
         }
     }
@@ -84,7 +84,7 @@ class CustomButtonActivityTest {
             cbTypeWhatsAppWithPhoneClick()
         }
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: (21) 98765-5544")
+            tvLastActionWithText("Last Action: (21) 98765-5544")
             cbTypeWhatsAppWithPhoneIsLoading(true)
         }
     }
@@ -95,7 +95,7 @@ class CustomButtonActivityTest {
             cbTypePhoneEnabledClick()
         }
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: Telefone")
+            tvLastActionWithText("Last Action: Telefone")
             cbTypePhoneEnabledIsLoading(true)
         }
     }
@@ -106,7 +106,7 @@ class CustomButtonActivityTest {
             cbTypePhoneWithNumberClick()
         }
         assertRobot {
-            tvLastActionWithText("Last ActionRobot: (21) 98765-5544")
+            tvLastActionWithText("Last Action: (21) 98765-5544")
             cbTypePhoneWithNumberIsLoading(true)
         }
     }
