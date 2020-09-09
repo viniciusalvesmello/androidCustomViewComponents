@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvLastAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Last Action: None"
+            android:textAlignment="center"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbPrimaryEnabled"
+            style="@style/CustomButton.Primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLastAction" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbPrimaryDisabled"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:enabled="false"
+            android:text="Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbPrimaryEnabled" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypeWhatsAppEnabled"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:customButtonType="typeWhatsApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbPrimaryDisabled" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypeWhatsAppDisabled"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:enabled="false"
+            app:customButtonType="typeWhatsApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbTypeWhatsAppEnabled" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypeWhatsAppWithPhone"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="(21) 98765-5544"
+            app:customButtonType="typeWhatsApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbTypeWhatsAppDisabled" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypePhoneEnabled"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:customButtonType="typePhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbTypeWhatsAppWithPhone" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypePhoneDisabled"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:enabled="false"
+            app:customButtonType="typePhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbTypePhoneEnabled" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbTypePhoneWithNumber"
+            style="@style/CustomButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="(21) 98765-5544"
+            app:customButtonType="typePhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbTypePhoneDisabled" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

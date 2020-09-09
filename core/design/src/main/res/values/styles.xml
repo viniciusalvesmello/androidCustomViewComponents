@@ -1,0 +1,17 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariant</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorGrayLight">@color/grayLight</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="android:textColorPrimary">@color/onPrimary</item>
+        <item name="android:textColorSecondary">@color/onSecondary</item>
+    </style>
+</resources>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetText"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Text"
+            android:maxLength="100"
+            android:required="false"
+            app:customEditTextType="text"
+            app:layout_constraintEnd_toStartOf="@+id/mcbTextRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbTextRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetText"
+            app:layout_constraintTop_toTopOf="@+id/cetText" />
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetNumber"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Number"
+            android:maxLength="100"
+            app:customEditTextType="number"
+            app:layout_constraintEnd_toStartOf="@+id/mcbNumberRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cetText" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbNumberRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetNumber"
+            app:layout_constraintTop_toTopOf="@+id/cetNumber" />
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetMoney"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Money"
+            android:maxLength="100"
+            app:customEditTextType="money"
+            app:layout_constraintEnd_toStartOf="@+id/mcbMoneyRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cetNumber" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbMoneyRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetMoney"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetMoney"
+            app:layout_constraintTop_toTopOf="@+id/cetMoney" />
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetPhone"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Phone"
+            app:customEditTextType="phone"
+            app:layout_constraintEnd_toStartOf="@+id/mcbPhoneRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cetMoney" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbPhoneRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetPhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetPhone"
+            app:layout_constraintTop_toTopOf="@+id/cetPhone" />
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetCPF"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:hint="CPF"
+            app:customEditTextType="cpf"
+            app:layout_constraintEnd_toStartOf="@+id/mcbCPFRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cetPhone" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbCPFRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetCPF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetCPF"
+            app:layout_constraintTop_toTopOf="@+id/cetCPF" />
+
+        <io.github.viniciusalvesmello.design.components.edittext.CustomEditText
+            android:id="@+id/cetCNPJ"
+            style="@style/CustomEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:hint="CNPJ"
+            app:customEditTextType="cnpj"
+            app:layout_constraintEnd_toStartOf="@+id/mcbCNPJRequired"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cetCPF" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/mcbCNPJRequired"
+            style="@style/Widget.MaterialComponents.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="@+id/cetCNPJ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cetCNPJ"
+            app:layout_constraintTop_toTopOf="@+id/cetCNPJ" />
+
+        <io.github.viniciusalvesmello.design.components.button.CustomButton
+            android:id="@+id/cbValidate"
+            style="@style/CustomButton.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="Validar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cetCNPJ" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
