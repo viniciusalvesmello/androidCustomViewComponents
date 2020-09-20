@@ -21,8 +21,5 @@ class MainActivity : AppCompatActivity() {
         cbButton.setOnClickListener {
             startActivity(Intent(this, CustomButtonActivity::class.java))
         }
-        cbContact.setOnClickListener {
-
-        }
     }
 }
