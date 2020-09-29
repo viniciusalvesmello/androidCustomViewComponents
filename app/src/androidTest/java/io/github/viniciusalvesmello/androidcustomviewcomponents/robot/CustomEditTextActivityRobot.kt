@@ -2,7 +2,7 @@ package io.github.viniciusalvesmello.androidcustomviewcomponents.robot
 
 import io.github.viniciusalvesmello.androidcustomviewcomponents.R
 import io.github.viniciusalvesmello.test.robot.ActionRobot
-import io.github.viniciusalvesmello.test.robot.AssetRobot
+import io.github.viniciusalvesmello.test.robot.AssertRobot
 
 object CustomEditTextActivityRobot {
 
@@ -11,7 +11,7 @@ object CustomEditTextActivityRobot {
     }
 
     fun assertRobot(init: AssertRobot.() -> Unit) {
-        AssertRobot(AssetRobot()).init()
+        AssertRobot(AssertRobot()).init()
     }
 
     class ActionRobot(private val robot: io.github.viniciusalvesmello.test.robot.ActionRobot){
@@ -37,7 +37,7 @@ object CustomEditTextActivityRobot {
         fun clickValidate() = robot.clickOnView(R.id.cbValidate)
     }
 
-    class AssertRobot(private val robot: AssetRobot) {
+    class AssertRobot(private val robot: io.github.viniciusalvesmello.test.robot.AssertRobot) {
 
         fun textFieldWithText(text: String) = robot.customEditTextWithText(R.id.cetText, text)
         fun textFieldWithHint(hint: String) = robot.customEditTextWithHint(R.id.cetText, hint)

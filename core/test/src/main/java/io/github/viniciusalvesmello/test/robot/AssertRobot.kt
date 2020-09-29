@@ -23,7 +23,7 @@ import io.github.viniciusalvesmello.test.customs.customEditTextWithText
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matcher
 
-class AssetRobot {
+class AssertRobot {
 
     fun textIsVisible(text: String, isDisplayed: Boolean = true) {
         onView(withText(text)).check(matches(resolveVisibilityMatcher(isDisplayed)))

@@ -2,7 +2,7 @@ package io.github.viniciusalvesmello.androidcustomviewcomponents.robot
 
 import io.github.viniciusalvesmello.androidcustomviewcomponents.R
 import io.github.viniciusalvesmello.test.robot.ActionRobot
-import io.github.viniciusalvesmello.test.robot.AssetRobot
+import io.github.viniciusalvesmello.test.robot.AssertRobot
 
 object CustomButtonActivityRobot {
 
@@ -11,7 +11,7 @@ object CustomButtonActivityRobot {
     }
 
     fun assertRobot(init: AssertRobot.() -> Unit) {
-        AssertRobot(AssetRobot()).init()
+        AssertRobot(AssertRobot()).init()
     }
 
     class ActionRobot(private val robot: io.github.viniciusalvesmello.test.robot.ActionRobot) {
@@ -23,7 +23,7 @@ object CustomButtonActivityRobot {
         fun cbTypePhoneWithNumberClick() = robot.clickOnView(R.id.cbTypePhoneWithNumber)
     }
 
-    class AssertRobot(private val robot: AssetRobot) {
+    class AssertRobot(private val robot: io.github.viniciusalvesmello.test.robot.AssertRobot) {
 
         fun tvLastActionWithText(text: String) = robot.viewWithText(R.id.tvLastAction, text)
 
