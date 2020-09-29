@@ -28,7 +28,7 @@ class CustomButtonActivity : AppCompatActivity() {
     }
 
     private fun CustomButton.setAction() {
-        setOnClickListener {view ->
+        setOnClickListener { view ->
             (view as? CustomButton)?.apply {
                 "Last Action: $text".let { text -> tvLastAction.text = text }
                 runLoading()
