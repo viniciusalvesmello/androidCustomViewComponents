@@ -2,19 +2,19 @@ package io.github.viniciusalvesmello.androidcustomviewcomponents.robot
 
 import io.github.viniciusalvesmello.androidcustomviewcomponents.R
 import io.github.viniciusalvesmello.test.robot.ActionRobot
-import io.github.viniciusalvesmello.test.robot.AssetRobot
+import io.github.viniciusalvesmello.test.robot.AssertRobot
 
 object CustomButtonActivityRobot {
 
-    fun actionRobot(init: ActionRobot.() -> Unit) {
-        ActionRobot(ActionRobot()).init()
+    fun actionRobot(init: ActivityActionRobot.() -> Unit) {
+        ActivityActionRobot(ActionRobot()).init()
     }
 
-    fun assertRobot(init: AssertRobot.() -> Unit) {
-        AssertRobot(AssetRobot()).init()
+    fun assertRobot(init: ActivityAssertRobot.() -> Unit) {
+        ActivityAssertRobot(AssertRobot()).init()
     }
 
-    class ActionRobot(private val robot: io.github.viniciusalvesmello.test.robot.ActionRobot) {
+    class ActivityActionRobot(private val robot: ActionRobot) {
 
         fun cbPrimaryEnabledClick() = robot.clickOnView(R.id.cbPrimaryEnabled)
         fun cbTypeWhatsAppEnabledClick() = robot.clickOnView(R.id.cbTypeWhatsAppEnabled)
@@ -23,7 +23,7 @@ object CustomButtonActivityRobot {
         fun cbTypePhoneWithNumberClick() = robot.clickOnView(R.id.cbTypePhoneWithNumber)
     }
 
-    class AssertRobot(private val robot: AssetRobot) {
+    class ActivityAssertRobot(private val robot: AssertRobot) {
 
         fun tvLastActionWithText(text: String) = robot.viewWithText(R.id.tvLastAction, text)
 

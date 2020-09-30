@@ -2,19 +2,19 @@ package io.github.viniciusalvesmello.androidcustomviewcomponents.robot
 
 import io.github.viniciusalvesmello.androidcustomviewcomponents.R
 import io.github.viniciusalvesmello.test.robot.ActionRobot
-import io.github.viniciusalvesmello.test.robot.AssetRobot
+import io.github.viniciusalvesmello.test.robot.AssertRobot
 
 object CustomEditTextActivityRobot {
 
-    fun actionRobot(init: ActionRobot.() -> Unit) {
-        ActionRobot(ActionRobot()).init()
+    fun actionRobot(init: ActivityActionRobot.() -> Unit) {
+        ActivityActionRobot(ActionRobot()).init()
     }
 
-    fun assertRobot(init: AssertRobot.() -> Unit) {
-        AssertRobot(AssetRobot()).init()
+    fun assertRobot(init: ActivityAssertRobot.() -> Unit) {
+        ActivityAssertRobot(AssertRobot()).init()
     }
 
-    class ActionRobot(private val robot: io.github.viniciusalvesmello.test.robot.ActionRobot){
+    class ActivityActionRobot(private val robot: ActionRobot){
 
         fun fillTextField(text: String) = robot.fillCustomEditText(R.id.cetText, text)
         fun clickCheckBoxTextRequired() = robot.clickOnView(R.id.mcbTextRequired)
@@ -37,7 +37,7 @@ object CustomEditTextActivityRobot {
         fun clickValidate() = robot.clickOnView(R.id.cbValidate)
     }
 
-    class AssertRobot(private val robot: AssetRobot) {
+    class ActivityAssertRobot(private val robot: AssertRobot) {
 
         fun textFieldWithText(text: String) = robot.customEditTextWithText(R.id.cetText, text)
         fun textFieldWithHint(hint: String) = robot.customEditTextWithHint(R.id.cetText, hint)
